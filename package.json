@@ -1,6 +1,6 @@
 {
   "name": "geradordepara",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Gerador de De-Para Logístico com IA",
   "main": "src/main.ts",
   "scripts": {
