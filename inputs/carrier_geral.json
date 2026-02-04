@@ -1,0 +1,66 @@
+[
+  {
+    "code": "1",
+    "description": "Arquivo processado"
+  },
+  {
+    "code": "2",
+    "description": "Remessa conciliada"
+  },
+  {
+    "code": "3",
+    "description": "Produto coletado"
+  },
+  {
+    "code": "4",
+    "description": "Remessa cadastrada"
+  },
+  {
+    "code": "5",
+    "description": "Remessa consolidada"
+  },
+  {
+    "code": "6",
+    "description": "Carga transferida"
+  },
+  {
+    "code": "7",
+    "description": "Carga recebida"
+  },
+  {
+    "code": "8",
+    "description": "Remessa desconsolidada"
+  },
+  {
+    "code": "9",
+    "description": "Remessa em rota de entrega"
+  },
+  {
+    "code": "10",
+    "description": "Entregue com sucesso"
+  },
+  {
+    "code": "11",
+    "description": "Ausente"
+  },
+  {
+    "code": "12",
+    "description": "Roubo"
+  },
+  {
+    "code": "13",
+    "description": "Furto"
+  },
+  {
+    "code": "14",
+    "description": "Extravio"
+  },
+  {
+    "code": "15",
+    "description": "Comprovante digitalizado"
+  },
+  {
+    "code": "16",
+    "description": "Local demolido"
+  }
+]

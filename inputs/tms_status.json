@@ -1,0 +1,74 @@
+[
+  {
+    "code": "0",
+    "description": "Contratado"
+  },
+  {
+    "code": "1",
+    "description": "Aguardando coleta / postagem"
+  },
+  {
+    "code": "2",
+    "description": "Em trânsito"
+  },
+  {
+    "code": "3",
+    "description": "Entregue"
+  },
+  {
+    "code": "5",
+    "description": "Entrega não realizada"
+  },
+  {
+    "code": "6",
+    "description": "Reentrega / Primeira tentativa"
+  },
+  {
+    "code": "7",
+    "description": "Devolução / Retorno"
+  },
+  {
+    "code": "8",
+    "description": "Em trânsito para devolução"
+  },
+  {
+    "code": "9",
+    "description": "Devolvido ao remetente"
+  },
+  {
+    "code": "11",
+    "description": "Entrega parcial"
+  },
+  {
+    "code": "12",
+    "description": "Devolução parcial"
+  },
+  {
+    "code": "13",
+    "description": "Em trânsito para devolução parcial"
+  },
+  {
+    "code": "14",
+    "description": "Devolvido parcialmente"
+  },
+  {
+    "code": "15",
+    "description": "Coletado / Postado"
+  },
+  {
+    "code": "16",
+    "description": "Em transferência"
+  },
+  {
+    "code": "17",
+    "description": "Em rota para entrega"
+  },
+  {
+    "code": "18",
+    "description": "Sinistro / Roubo"
+  },
+  {
+    "code": "19",
+    "description": "Disponível para retirada"
+  }
+]
