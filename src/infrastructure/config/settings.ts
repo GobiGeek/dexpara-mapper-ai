@@ -9,7 +9,7 @@ export const settings = {
   paths: {
     root: projectRoot,
     inputs: path.join(projectRoot, 'inputs'),
-    outputFile: path.join(projectRoot, 'Resultado_Clean_Arch.xlsx'),
+    outputFile: path.join(projectRoot, 'dexpara-completed.xlsx'),
     tmsJson: 'tms_status.json',
     carrierJson: 'carrier_geral.json',
   },

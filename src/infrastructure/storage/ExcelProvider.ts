@@ -1,5 +1,5 @@
 import ExcelJS from 'exceljs'
-import { MappingResult } from '../../core/types/Status'
+import { MappingResult } from '../../core/types/Status.js'
 
 export class ExcelProvider {
   async generate(data: MappingResult[], filePath: string): Promise<void> {
