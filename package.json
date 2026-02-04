@@ -1,10 +1,10 @@
 {
   "name": "geradordepara",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "2.0.0",
+  "description": "Gerador de De-Para Logístico com IA",
+  "main": "src/main.ts",
   "scripts": {
-    "start": "ts-node index.ts"
+    "start": "tsx src/main.ts"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@types/node": "^25.2.0",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.7.1",
     "typescript": "^5.9.3"
   }
 }
