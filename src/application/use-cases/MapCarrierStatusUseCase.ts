@@ -1,5 +1,5 @@
 import { IAIProvider } from '../interfaces/IAIProvider.js'
-import { StatusEntry } from '../../core/types/Status.js'
+import { StatusEntry, MappingResult } from '../../core/types/Status.js'
 
 export class MapCarrierStatusUseCase {
   constructor(private aiProvider: IAIProvider) {}
@@ -7,13 +7,14 @@ export class MapCarrierStatusUseCase {
   async execute(
     carrierData: StatusEntry[],
     tmsData: StatusEntry[],
-  ): Promise<any[]> {
+  ): Promise<MappingResult[]> {
     const tmsContext = tmsData
       .map((t) => `ID:${t.code}|DESC:${t.description}`)
       .join('\n')
-    const inputs = carrierData
-      .map((c) => `ID:${c.code}|DESC:${c.description}`)
-      .join('\n')
+
+    const inputs = carrierData.map(
+      (c) => `ID_CARRIER:${c.code}|DESC:${c.description}`,
+    )
 
     return await this.aiProvider.mapStatusBatch(inputs, tmsContext)
   }

@@ -17,46 +17,48 @@ export class GeminiProvider implements IAIProvider {
     })
   }
 
+  // Recebe string[] (Array)
   async mapStatusBatch(
-    inputs: string,
+    inputs: string[],
     context: string,
   ): Promise<MappingResult[]> {
     const totalItens = inputs.length
+
     if (totalItens === 0) return []
-    const prompt = `Você é um motor de tradução logística de alta precisão. Sua missão é realizar o mapeamento De-Para entre ocorrências de transportadoras e o dicionário oficial TMS.
 
-### REGRAS CRÍTICAS DE NEGÓCIO:
-1. **Rigor de Similaridade:** Se o status da transportadora não tiver uma correlação clara e direta com nenhum item do dicionário TMS, você deve retornar "id": null, "status": null e "pq": "Baixa similaridade semântica". NÃO TENTE FORÇAR UM VÍNCULO.
-2. **Prioridade de Evento:** - Status que indicam o início da jornada (ex: "Transporte iniciado", "Coleta realizada", "Postado") devem ser mapeados para "Coletado/Postado" e não para "Em trânsito". 
-   - "Em trânsito" deve ser usado apenas para movimentações entre unidades ou quando a mercadoria já saiu da origem mas ainda não chegou ao destino final.
-3. **Casos Vazios:** Se a descrição for ambígua demais (ex: "...", "Status 123", "Processando"), retorne nulo.
+    console.log(`Enviando prompt com ${totalItens} itens para o Gemini...`)
 
-### DICIONÁRIO TMS (REFERÊNCIA ÚNICA):
-${context}
+    const inputsText = inputs.join('\n')
 
-### LISTA PARA TRADUZIR (ITENS DA TRANSPORTADORA):
-${inputs}
+    const prompt = `Você é um motor de tradução logística.
+    
+    CONTEXTO:
+    Recebi uma lista com exatos ${totalItens} itens.
+    Sua missão é devolver um JSON contendo exatos ${totalItens} objetos.
 
-### FORMATO DE SAÍDA:
-Retorne EXCLUSIVAMENTE um array JSON com exatamente ${totalItens} objetos, respeitando a ordem da lista.
-Estrutura:
-[
-  {
-    "id_carrier: "ID_TRANSPORTADORA",
-    "original": "texto_original", 
-    "id_trans": "id_vindo_da_lista", 
-    "id": "ID_TMS_OU_NULL", 
-    "status": "DESC_TMS_OU_NULL", 
-    "pq": "Explicação curta do motivo técnica ou motivo da rejeição"
-  }
-]`
+    DICIONÁRIO TMS:
+    ${context}
+
+    ITENS PARA ANALISAR:
+    ${inputsText}
+
+    Retorne JSON Array de objetos:
+    [
+      { "id_carrier": "...", "original": "...", "id": "...", "status": "...", "pq": "..." }
+    ]`
+
     try {
       const result = await this.model.generateContent(prompt)
       const responseText = result.response.text()
       const cleanJson = responseText.replace(/```json|```/g, '').trim()
-      return JSON.parse(cleanJson)
+      const parsed = JSON.parse(cleanJson)
+
+      // Validação extra de segurança
+      if (!Array.isArray(parsed)) throw new Error('IA não retornou um array')
+
+      return parsed
     } catch (error) {
-      console.error(`Erro ao processor o lote de ${totalItens} itens`, error)
+      console.error(`Erro no Gemini ao processar ${totalItens} itens.`)
       throw error
     }
   }
