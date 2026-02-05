@@ -11,7 +11,9 @@ export class MapCarrierStatusUseCase {
     const tmsContext = tmsData
       .map((t) => `ID:${t.code}|DESC:${t.description}`)
       .join('\n')
-    const inputs = carrierData.map((c) => c.description)
+    const inputs = carrierData
+      .map((c) => `ID:${c.code}|DESC:${c.description}`)
+      .join('\n')
 
     return await this.aiProvider.mapStatusBatch(inputs, tmsContext)
   }

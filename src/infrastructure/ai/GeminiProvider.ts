@@ -9,7 +9,7 @@ export class GeminiProvider implements IAIProvider {
   constructor(apiKey: string) {
     const genAI = new GoogleGenerativeAI(apiKey)
     this.model = genAI.getGenerativeModel({
-      model: settings.ai.modelName, // Config centralizada
+      model: settings.ai.modelName,
       generationConfig: {
         responseMimeType: 'application/json',
         temperature: settings.ai.temperature,
@@ -18,7 +18,7 @@ export class GeminiProvider implements IAIProvider {
   }
 
   async mapStatusBatch(
-    inputs: string[],
+    inputs: string,
     context: string,
   ): Promise<MappingResult[]> {
     const totalItens = inputs.length
@@ -35,13 +35,14 @@ export class GeminiProvider implements IAIProvider {
 ${context}
 
 ### LISTA PARA TRADUZIR (ITENS DA TRANSPORTADORA):
-${inputs.join('\n- ')}
+${inputs}
 
 ### FORMATO DE SAÍDA:
 Retorne EXCLUSIVAMENTE um array JSON com exatamente ${totalItens} objetos, respeitando a ordem da lista.
 Estrutura:
 [
   {
+    "id_carrier: "ID_TRANSPORTADORA",
     "original": "texto_original", 
     "id_trans": "id_vindo_da_lista", 
     "id": "ID_TMS_OU_NULL", 

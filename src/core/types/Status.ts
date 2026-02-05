@@ -4,6 +4,7 @@ export interface StatusEntry {
 }
 
 export interface MappingResult {
+  id_carrier: string
   original: string
   id: string
   status: string

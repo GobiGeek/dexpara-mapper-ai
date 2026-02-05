@@ -8,6 +8,7 @@ export class ExcelProvider {
     const sheet = workbook.addWorksheet('De-Para')
 
     sheet.columns = [
+      { header: 'ID Carrier', key: 'id_carrier', width: 15 },
       { header: 'Status Original', key: 'original', width: 45 },
       { header: 'ID TMS', key: 'id', width: 15 },
       { header: 'Descrição TMS', key: 'status', width: 45 },
