@@ -53,7 +53,6 @@ export class GeminiProvider implements IAIProvider {
       const cleanJson = responseText.replace(/```json|```/g, '').trim()
       const parsed = JSON.parse(cleanJson)
 
-      // Validação extra de segurança
       if (!Array.isArray(parsed)) throw new Error('IA não retornou um array')
 
       return parsed
